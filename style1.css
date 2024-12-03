@@ -1,0 +1,117 @@
+﻿@font-face {
+    font-family: 'Font';
+    src: url(font/fontmo.otf);
+}
+
+body {
+    background-image: url(pics/gifbg.gif);
+    background-size: 100% 700%;
+    background-repeat: no-repeat;
+}
+
+nav {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+    nav ul li {
+        display: inline-block;
+    }
+
+.list {
+    margin: 20px 50px 30px 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .list:hover {
+        transform: scale(1.2);
+    }
+
+
+nav ul li #menu  {
+    text-decoration: none;
+}
+nav ul li #services {
+    text-decoration: none;
+}
+nav ul li #about {
+    text-decoration: none;
+}
+
+nav ul li a {
+    color: whitesmoke;
+    padding: 15px 20px 25px 20px;
+    font-size: 40px;
+}
+
+nav ul li .nav-link:hover {
+    color:black;
+    background-color: wheat;
+    border-radius:10px;
+}
+
+
+
+.logo {
+    width: 120px;
+}
+
+.head{
+    position:absolute;
+    left: 790px;
+    top: 280px;
+    width:auto;
+}
+
+.title{
+    font-size:150px;
+    padding:0;
+    margin-top: 10px;
+    font-family: Font;
+    color: whitesmoke;
+}
+
+h3 {
+    margin-top: -100px;
+    margin-left: -55px;
+    padding: 0;
+    color: whitesmoke;
+    font-size: 50px;
+}
+
+.wel {
+    margin-bottom: -20px;
+    padding-left: 60px;
+    color: whitesmoke;
+}
+
+.order {
+    position: absolute;
+    bottom: 30%;
+    left: 47%;
+    background-color: wheat;
+    border-radius: 25px;
+    padding: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .order:hover {
+        transform: scale(1.2);
+    }
+    .order a {
+        text-decoration: none;
+        font-size: 35px;
+        color: whitesmoke;
+    }
+
+        

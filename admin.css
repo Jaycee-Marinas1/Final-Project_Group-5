@@ -1,0 +1,116 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Noto Sans', Arial, sans-serif; /* Elegant, modern font */
+    background-color: #1e1e1e; /* Dark background */
+    color: #fff; /* White text for contrast */
+}
+
+/* Container Styling */
+.admin-container {
+    width: 85%;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #2e2e2e; /* Dark grey background */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #e60000; /* Red border for a pop of color */
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #e60000; /* Red for header */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase; /* Adds a bit of traditional elegance */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #e60000; /* Red borders for each cell */
+}
+
+th {
+    background-color: #111; /* Deep black background for table header */
+    color: #fff; /* White text for contrast */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+td {
+    background-color: #333; /* Dark grey for table rows */
+    color: #fff; /* White text */
+    font-size: 16px;
+    padding: 12px;
+    text-align: center;
+    border-left: 1px solid #444; /* Subtle border between columns */
+}
+
+/* Table Row Hover */
+tr:hover {
+    background-color: #444; /* Slightly lighter dark grey on hover */
+}
+
+/* Button Styling */
+button {
+    padding: 8px 16px;
+    background-color: #e60000; /* Red for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b30000; /* Darker red on hover */
+}
+
+/* Form Elements Styling */
+form select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+}
+
+form select option {
+    background-color: #333;
+    color: #fff;
+}
+
+form select:hover {
+    background-color: #444; /* Dark grey hover effect */
+}
+
+/* Layout Adjustments */
+td form {
+    margin: 0;
+}
+
+/* Optional Text Styling */
+h2, p {
+    text-align: center;
+    font-size: 16px;
+    color: #ddd;
+}
+

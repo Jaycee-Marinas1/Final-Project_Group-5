@@ -1,0 +1,81 @@
+3. HTML Form (Updated with Action)
+You need to update your <form> in the services.html file to submit the data to order.php. Modify the form action to point to your PHP script (order.php).
+
+html
+Copy code
+<form class="form1" action="order.php" method="post">
+    <div class="form-group">
+        <label class="label1" for="name">Name:</label>
+        <input class="int1" type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+        <label class="label1" for="contact">Contact:</label>
+        <input class="int1" type="text" id="contact" name="contact" required>
+    </div>
+
+    <div class="form-group">
+        <label class="label1" for="address">Address:</label>
+        <input class="int1" type="text" id="address" name="address" required>
+    </div>
+
+    <div class="form-group">
+        <label class="label1" for="payment">Payment Method:</label>
+        <select class="int1" id="payment" name="payment" required>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Paypal">Paypal</option>
+        </select>
+    </div>
+
+    <div class="select1">
+        <h2 class="select">Select your orders:</h2>
+
+        <h3 class="h3">Korean</h3>
+
+        <div class="order-item">
+            <input class="quantity" type="number" value="1" min="1" onchange="calculateTotal()">
+            <input class="int3" type="checkbox" id="order1" name="order[]" value="190" onclick="calculateTotal()">
+            <label class="label3" for="order1">Bibimbap &#8369;190</label>
+        </div>
+
+        <div class="order-item">
+            <input class="quantity" type="number" value="1" min="1" onchange="calculateTotal()">
+            <input class="int3" type="checkbox" id="order2" name="order[]" value="140" onclick="calculateTotal()">
+            <label class="label3" for="order2">Kimchi &#8369;140</label>
+        </div>
+
+        <!-- Add more orders here -->
+
+    </div>
+
+    <div class="form-group">
+        <label class="label1">Total Price:</label>
+        <span id="totalPrice">₱0</span> <!-- This will be dynamically updated -->
+    </div>
+
+    <button type="submit">Place Order</button>
+</form>
+4. Database Connection (db.php)
+Create a db.php file that establishes a connection to your MySQL database:
+
+php
+Copy code
+<?php
+// Database connection settings
+$host = 'localhost';  // Database server (usually localhost)
+$dbname = 'orders_db'; // Your database name
+$username = 'root';  // MySQL username
+$password = '';  // MySQL password (default is empty for XAMPP)
+
+$conn = mysqli_connect($host, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+5. Important Considerations
+Ensure your XAMPP MySQL server is running, and you've created the necessary database and table.
+The order_items are stored as a comma-separated string. If you need more advanced functionality (e.g., storing items with quantities separately), you could create a second table for order details.
+Adjust the calculateTotal() function to handle the actual price calculation more accurately, if needed.
+Now, when a user fills out the form and submits it, the data will be sent to order.php, processed, and inserted into the orders table in your MySQL database.

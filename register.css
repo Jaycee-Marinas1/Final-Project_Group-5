@@ -1,0 +1,92 @@
+/* register.css */
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: wheat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid rgb(78, 50, 35); /* Dark brown border */
+}
+
+/* Title of the form */
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: rgb(78, 50, 35); /* Dark brown color for title */
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(78, 50, 35); /* Dark brown */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: black; /* Darker color on hover */
+}
+
+/* Text links styling */
+p {
+    text-align: center;
+    font-size: 14px;
+    color: rgb(78, 50, 35); /* Dark brown for text */
+}
+
+p a {
+    color: rgb(78, 50, 35);
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 500px) {
+    form {
+        padding: 20px;
+    }
+
+    form h2 {
+        font-size: 20px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+    }
+}

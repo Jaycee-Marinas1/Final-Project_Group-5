@@ -1,0 +1,311 @@
+﻿@font-face {
+    font-family: 'Font';
+    src: url(font/fontmo.otf);
+}
+
+body {
+    background-image: url(pics/service.webp);
+    background-size: 100% 130%;
+    background-repeat: no-repeat;
+}
+
+nav {
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        z-index: 20;
+    }
+
+        nav ul li {
+            display: inline-block;
+            z-index: 20;
+        }
+
+.list {
+    margin: 20px 50px 30px 0;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+    .list:hover {
+        transform: scale(1.2);
+    }
+
+nav ul li #home {
+    text-decoration: none;
+}
+
+nav ul li #menu {
+    text-decoration: none;
+}
+
+
+nav ul li #about {
+    text-decoration: none;
+}
+
+nav ul li a {
+    color: whitesmoke;
+    padding: 15px 20px 25px 20px;
+    font-size: 40px;
+}
+
+.jkl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 1));
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+}
+
+
+.websize {
+    margin-left: 200px;
+}
+
+.login {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1));
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 120px;
+}
+
+.order {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+    .form-group .label1 {
+        display: block;
+        margin-left: 25px;
+        color: white;
+    }
+
+    .form-group .textarea1 {
+        width: 300px;
+        height: 100px;
+        border-radius: 4px;
+        margin-left: 25px;
+        border: 2px solid darkred;
+        border-radius: 15px;
+    }
+
+.quantity{
+    width: 30px;
+}
+
+.int1 {
+    width: 300px;
+    padding: 8px;
+    border: 2px solid darkred;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-left: 25px;
+}
+
+.label3 {
+    color: white;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+#payment {
+    width: 250px;
+    margin-left: 25px;
+    border: 2px solid darkred;
+    border-radius: 15px;
+}
+
+.h3 {
+    color: white;
+    font-size: 1.5em;
+}
+
+.select1, .select2, .select3, .select4, .select5, .select6 {
+    position: absolute;
+    top: 190px;
+    left: 570px;
+    width: 270px;
+}
+
+.select1 {
+    left: 570px;
+}
+
+.select2 {
+    left: 865px;
+    top: 235px;
+}
+
+.select3 {
+    left: 1145px;
+    top: 235px;
+}
+
+.select4 {
+    left: 1415px;
+    top: 235px;
+}
+
+.select5 {
+    left: 570px;
+    top: 620px;
+}
+
+.select6 {
+    left: 780px;
+    top: 495px;
+}
+
+.select {
+    color: white;
+}
+
+.submit {
+    margin: 20px 0 50px 90px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .submit:hover {
+        transform: scale(1.1);
+    }
+
+.totalPrice {
+    position: absolute;
+    bottom: 50px;
+    left: 400px;
+    color: white;
+    font-size: 40px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.modal-content {
+    background: linear-gradient(to top, rgba(0,0,0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid white;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease-in-out;
+    color: white;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .submit-button:hover {
+        transform: scale(1.1);
+    }
+
+.submit-button1 {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid darkred;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .submit-button1:hover {
+        transform: scale(1.1);
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.log-bot {
+    position: absolute;
+    top: 45%;
+    left: 48%;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid white;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: underline;
+}
+
+#menu-bot:hover {
+    transform: scale(1.2);
+}
+
+#menu-bot a {
+    text-decoration: none;
+    font-size: 35px;
+    color: white;
+}

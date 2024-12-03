@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Services</title>
+    <link rel="stylesheet" href="services.css" />
+    <script>
+        function showConfirmation(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Check if all required fields are filled out
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var address = document.getElementById("address").value;
+            var payment = document.getElementById("payment").value;
+
+            // Check if any required field is empty
+            if (!name || !contact || !address || !payment) {
+                alert("Please fill out all required fields.");
+                return; // Don't show the confirmation modal if any field is empty
+            }
+
+            // Check if at least one order is selected
+            var atLeastOneOrderSelected = false;
+            var orders = document.querySelectorAll('.order-item input[type="checkbox"]');
+            orders.forEach(function(order) {
+                if (order.checked) {
+                    atLeastOneOrderSelected = true;
+                }
+            });
+
+            if (!atLeastOneOrderSelected) {
+                alert("Please select at least one order.");
+                return; // Don't show the confirmation modal if no order is selected
+            }
+
+            // If all validations pass, submit the form programmatically
+            document.querySelector("form").submit();
+        }
+
+        function calculateTotal() {
+    let total = 0; // Initialize total price
+    const orderItems = document.querySelectorAll('.order-item'); // Select all order items
+
+    orderItems.forEach(orderItem => {
+        const checkbox = orderItem.querySelector('input[type="checkbox"]'); // Find the checkbox
+        const quantityInput = orderItem.querySelector('input[type="number"]'); // Find the quantity input
+        const label = orderItem.querySelector('label'); // Find the label with the price
+
+        // Strip out any non-numeric characters and extract the price (now more robust)
+        const priceMatch = label.innerHTML.replace(/[^\d.]/g, '');  // Remove everything except digits and decimal
+
+        // Debugging log
+        console.log(`Price match: ${priceMatch}, Checkbox checked: ${checkbox.checked}`);
+
+        if (priceMatch && checkbox.checked) { // Only calculate if the checkbox is checked
+            const price = parseInt(priceMatch); // Extract price as a number
+            const quantity = parseInt(quantityInput.value) || 1; // Extract quantity, default to 1
+            total += price * quantity; // Add price * quantity to the total
+        }
+    });
+
+    // Update the total price display
+    document.getElementById("totalPrice").innerHTML = "&#8369;" + total;
+}
+
+
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="dashboard.html"><img src="pics/logo.png" class="logo" /></a></li>
+            <li class="list"><a href="dashboard.html" class="nav-link" id="home">Home</a></li>
+            <li class="list"><a href="menu.html" class="nav-link" id="menu">Menu</a></li>
+            <li class="list"><a href="services.html" class="nav-link" id="services">Services</a></li>
+            <li class="list"><a href="aboutus.html" class="nav-link" id="about">About us</a></li>
+        </ul>
+    </nav>
+
+    <div class="websize">
+        <div class="container1">
+            <h1 class="order">Order Tab</h1>
+            <form class="form1" action="process_order.php" method="post">
+                <div class="form-group">
+                    <label class="label1" for="name">Name:</label>
+                    <input class="int1" type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="label1" for="contact">Contact:</label>
+                    <input class="int1" type="text" id="contact" name="contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="label1" for="address">Address:</label>
+                    <input class="int1" type="text" id="address" name="address" required>
+                </div>
+                    <!-- Korean Menu Container -->
+
+                    <div class="select1">
+                        <h2 class="select">Select your orders:</h2>
+
+                        <h3 class="h3">Korean</h3>
+
+                    <!-- Bibimbap -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity1" name="orders[bibimbap][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order1" name="orders[bibimbap][name]" value="bibimbap" onclick="calculateTotal()">
+    <label class="label3" for="order1">Bibimbap &#8369;190</label>
+</div>
+
+<!-- Kimchi -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity2" name="orders[kimchi][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order2" name="orders[kimchi][name]" value="kimchi" onclick="calculateTotal()">
+    <label class="label3" for="order2">Kimchi &#8369;140</label>
+</div>
+
+<!-- Bulgogi -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity3" name="orders[bulgogi][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order3" name="orders[bulgogi][name]" value="bulgogi" onclick="calculateTotal()">
+    <label class="label3" for="order3">Bulgogi &#8369;180</label>
+</div>
+
+<!-- Japchae -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity4" name="orders[japchae][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order4" name="orders[japchae][name]" value="japchae" onclick="calculateTotal()">
+    <label class="label3" for="order4">Japchae &#8369;200</label>
+</div>
+
+<!-- Samgyeopsal -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity5" name="orders[samgyeopsal][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order5" name="orders[samgyeopsal][name]" value="samgyeopsal" onclick="calculateTotal()">
+    <label class="label3" for="order5">Samgyeopsal &#8369;210</label>
+</div>
+
+<!-- Kalbi -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity6" name="orders[kalbi][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order6" name="orders[kalbi][name]" value="kalbi" onclick="calculateTotal()">
+    <label class="label3" for="order6">Kalbi &#8369;220</label>
+</div>
+
+<!-- Tteokbokki -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity7" name="orders[tteokbokki][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order7" name="orders[tteokbokki][name]" value="tteokbokki" onclick="calculateTotal()">
+    <label class="label3" for="order7">Tteokbokki &#8369;170</label>
+</div>
+
+<!-- Jajangmyeon -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity8" name="orders[jajangmyeon][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order8" name="orders[jajangmyeon][name]" value="jajangmyeon" onclick="calculateTotal()">
+    <label class="label3" for="order8">Jajangmyeon &#8369;160</label>
+</div>
+
+<!-- Sundubu-jjigae -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity9" name="orders[sundubujjigae][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order9" name="orders[sundubujjigae][name]" value="sundubujjigae" onclick="calculateTotal()">
+    <label class="label3" for="order9">Sundubu-jjigae &#8369;180</label>
+</div>
+
+
+                        <!-- Add more items with quantity inputs similarly -->
+                    </div>
+
+                    <!-- Japanese Menu Container -->
+                    <div class="select2">
+                        <h3 class="h3">Japanese</h3>
+
+                        <!-- Sushi -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity10" name="orders[sushi][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order10" name="orders[sushi][name]" value="sushi" onclick="calculateTotal()">
+    <label class="label3" for="order10">Sushi &#8369;100</label>
+</div>
+
+<!-- Ramen -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity12" name="orders[ramen][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order12" name="orders[ramen][name]" value="ramen" onclick="calculateTotal()">
+    <label class="label3" for="order12">Ramen &#8369;140</label>
+</div>
+
+<!-- Tempura -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity13" name="orders[tempura][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order13" name="orders[tempura][name]" value="tempura" onclick="calculateTotal()">
+    <label class="label3" for="order13">Tempura &#8369;140</label>
+</div>
+
+<!-- Tonkatsu -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity14" name="orders[tonkatsu][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order14" name="orders[tonkatsu][name]" value="tonkatsu" onclick="calculateTotal()">
+    <label class="label3" for="order14">Tonkatsu &#8369;190</label>
+</div>
+
+<!-- Sashimi -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity15" name="orders[sashimi][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order15" name="orders[sashimi][name]" value="sashimi" onclick="calculateTotal()">
+    <label class="label3" for="order15">Sashimi &#8369;190</label>
+</div>
+
+<!-- Udon -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity16" name="orders[udon][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order16" name="orders[udon][name]" value="udon" onclick="calculateTotal()">
+    <label class="label3" for="order16">Udon &#8369;190</label>
+</div>
+
+<!-- Yakitori -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity17" name="orders[yakitori][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order17" name="orders[yakitori][name]" value="yakitori" onclick="calculateTotal()">
+    <label class="label3" for="order17">Yakitori &#8369;190</label>
+</div>
+
+<!-- Okonomiyaki -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity18" name="orders[okonomiyaki][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order18" name="orders[okonomiyaki][name]" value="okonomiyaki" onclick="calculateTotal()">
+    <label class="label3" for="order18">Okonomiyaki &#8369;190</label>
+</div>
+
+<!-- Sukiyaki -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity19" name="orders[sukiyaki][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order19" name="orders[sukiyaki][name]" value="sukiyaki" onclick="calculateTotal()">
+    <label class="label3" for="order19">Sukiyaki &#8369;190</label>
+</div>
+
+
+                        <!-- Repeat the structure for other Japanese items -->
+                    </div>
+
+                    <!-- Filipino Menu Container -->
+
+                    <div class="select3">
+                        <h3 class="h3">Filipino</h3>
+
+                        <!-- Adobo -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity20" name="orders[adobo][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order20" name="orders[adobo][name]" value="adobo" onclick="calculateTotal()">
+    <label class="label3" for="order20">Adobo &#8369;150</label>
+</div>
+
+<!-- Sinigang -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity22" name="orders[sinigang][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order22" name="orders[sinigang][name]" value="sinigang" onclick="calculateTotal()">
+    <label class="label3" for="order22">Sinigang &#8369;180</label>
+</div>
+
+<!-- Kare-Kare -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity23" name="orders[kare-kare][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order23" name="orders[kare-kare][name]" value="kare-kare" onclick="calculateTotal()">
+    <label class="label3" for="order23">Kare-Kare &#8369;250</label>
+</div>
+
+<!-- Lechon -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity24" name="orders[lechon][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order24" name="orders[lechon][name]" value="lechon" onclick="calculateTotal()">
+    <label class="label3" for="order24">Lechon &#8369;350</label>
+</div>
+
+<!-- Lumpia -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity25" name="orders[lumpia][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order25" name="orders[lumpia][name]" value="lumpia" onclick="calculateTotal()">
+    <label class="label3" for="order25">Lumpia &#8369;120</label>
+</div>
+
+<!-- Nilaga -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity26" name="orders[nilaga][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order26" name="orders[nilaga][name]" value="nilaga" onclick="calculateTotal()">
+    <label class="label3" for="order26">Nilaga &#8369;180</label>
+</div>
+
+<!-- Crispy Pata -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity27" name="orders[crispy-pata][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order27" name="orders[crispy-pata][name]" value="crispy-pata" onclick="calculateTotal()">
+    <label class="label3" for="order27">Crispy Pata &#8369;350</label>
+</div>
+
+<!-- Pancit -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity28" name="orders[pancit][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order28" name="orders[pancit][name]" value="pancit" onclick="calculateTotal()">
+    <label class="label3" for="order28">Pancit &#8369;160</label>
+</div>
+
+<!-- Bicol Express -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity29" name="orders[bicol-express][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order29" name="orders[bicol-express][name]" value="bicol-express" onclick="calculateTotal()">
+    <label class="label3" for="order29">Bicol Express &#8369;200</label>
+</div>
+
+                        <!-- Repeat the structure for other Filipino items -->
+                    </div>
+
+                    <!-- Drinks Menu Container -->
+
+                    <div class="select4">
+                        <h3 class="h3">Drinks</h3>
+
+                        <!-- Green Tea -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity20" name="orders[green-tea][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order20" name="orders[green-tea][name]" value="green-tea" onclick="calculateTotal()">
+    <label class="label3" for="order20">Green Tea &#8369;120</label>
+</div>
+
+<!-- Ramune -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity22" name="orders[ramune][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order22" name="orders[ramune][name]" value="ramune" onclick="calculateTotal()">
+    <label class="label3" for="order22">Ramune &#8369;150</label>
+</div>
+
+<!-- Sake -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity23" name="orders[sake][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order23" name="orders[sake][name]" value="sake" onclick="calculateTotal()">
+    <label class="label3" for="order23">Sake &#8369;250</label>
+</div>
+
+<!-- Shochu -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity24" name="orders[shochu][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order24" name="orders[shochu][name]" value="shochu" onclick="calculateTotal()">
+    <label class="label3" for="order24">Shochu &#8369;300</label>
+</div>
+
+<!-- Umeshu -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity25" name="orders[umeshu][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order25" name="orders[umeshu][name]" value="umeshu" onclick="calculateTotal()">
+    <label class="label3" for="order25">Umeshu &#8369;350</label>
+</div>
+
+<!-- Yuzu Juice -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity26" name="orders[yuzu-juice][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order26" name="orders[yuzu-juice][name]" value="yuzu-juice" onclick="calculateTotal()">
+    <label class="label3" for="order26">Yuzu Juice &#8369;180</label>
+</div>
+
+<!-- Calpis -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity27" name="orders[calpis][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order27" name="orders[calpis][name]" value="calpis" onclick="calculateTotal()">
+    <label class="label3" for="order27">Calpis &#8369;180</label>
+</div>
+
+<!-- Matcha Latte -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity28" name="orders[matcha-latte][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order28" name="orders[matcha-latte][name]" value="matcha-latte" onclick="calculateTotal()">
+    <label class="label3" for="order28">Matcha Latte &#8369;200</label>
+</div>
+
+<!-- Coke -->
+<div class="order-item">
+    <input class="quantity" type="number" id="quantity29" name="orders[coke][quantity]" value="1" min="1" onchange="calculateTotal()">
+    <input class="int3" type="checkbox" id="order29" name="orders[coke][name]" value="coke" onclick="calculateTotal()">
+    <label class="label3" for="order29">Coke &#8369;100</label>
+</div>
+
+
+                        <!-- Repeat the structure for other Filipino items -->
+                    </div>
+
+
+
+
+
+
+
+                    <!-- payymeent methoood -->
+
+                    <div class="form-group">
+                        <label class="label1" for="payment">Payment Method:</label>
+                        <select id="payment" name="payment" required>
+                            <option value="">Select</option>
+                            <option value="cash_on_delivery">Cash on Delivery</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="label1" for="message">Additional Requests:</label>
+                        <textarea class="textarea1" id="message" name="message"></textarea>
+                    </div>
+    
+                    <br>
+                    <input class="submit" type="submit" value="Submit Orders" onclick="showConfirmation(event)">
+                </form>
+    
+                <div class="totalPrice">Total Price: <span id="totalPrice">&#8369;0</span></div>
+    
+                <!-- Confirmation Modal (This can be customized further) -->
+                <div id="confirmationModal" class="modal">
+                    <div class="modal-content">
+                        <h2>Thank you for your order!</h2>
+                        <button class="submit-button" onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+                <div class="jkl"></div>
+    
+            </div>
+        </div>
+    </body>
+    </html>

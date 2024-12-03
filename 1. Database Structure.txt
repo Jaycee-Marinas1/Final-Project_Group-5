@@ -1,0 +1,63 @@
+1. Database Structure
+You need a table to store the orders in your database. Assuming your database is called orders_db, the table could look like this:
+
+sql
+Copy code
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    contact VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    payment_method VARCHAR(255) NOT NULL,
+    order_items TEXT NOT NULL,  -- This will store the ordered items
+    total_price DECIMAL(10, 2) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+2. PHP Backend (order.php)
+You'll need a PHP file (e.g., order.php) to handle form submissions, process the order, and insert it into the database.
+
+php
+Copy code
+<?php
+include 'db.php'; // Include the database connection file
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the form inputs
+    $name = $_POST['name'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $payment = $_POST['payment'];
+    
+    // Get the selected orders and their quantities
+    $orders = isset($_POST['order']) ? $_POST['order'] : [];
+    $order_items = implode(", ", $orders);  // Store the selected orders as a comma-separated string
+    
+    // Calculate the total price
+    $total_price = 0;
+    foreach ($orders as $order) {
+        $total_price += floatval($order); // Assuming each order value is the price
+    }
+
+    // Prepare the SQL statement
+    $sql = "INSERT INTO orders (name, contact, address, payment_method, order_items, total_price) 
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    
+    if ($stmt) {
+        // Bind parameters and execute
+        mysqli_stmt_bind_param($stmt, "sssssd", $name, $contact, $address, $payment, $order_items, $total_price);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "Order placed successfully!";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Error preparing the SQL statement: " . mysqli_error($conn);
+    }
+}
+
+mysqli_close($conn);
+?>

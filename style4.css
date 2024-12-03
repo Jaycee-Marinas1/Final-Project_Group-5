@@ -1,0 +1,72 @@
+﻿@font-face {
+    font-family: 'Font';
+    src: url(font/fontmo.otf);
+}
+
+body {
+    background-image: url(pics/bgtry.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+nav {
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+.list {
+    margin: 20px 50px 30px 0;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+    .list:hover {
+        transform: scale(1.2);
+    }
+
+nav ul li #home {
+    text-decoration: none;
+}
+
+nav ul li #menu {
+}
+
+nav ul li #services {
+    text-decoration: none;
+}
+
+nav ul li #about {
+    text-decoration: none;
+}
+
+nav ul li a {
+    color: whitesmoke;
+    padding: 15px 20px 25px 20px;
+    font-size: 40px;
+}
+/*
+nav ul li .nav-link:hover {
+    color: black;
+    background-color: wheat;
+    border-radius: 10px;
+}
+*/
+
+
+.logo {
+    width: 120px;
+}
